@@ -47,18 +47,13 @@ export default {
     },
     methods: {
         async login () {
-            // ダミーリクエスト(1秒待機の後成功/失敗する)
-            const shouldSuccess = true
-            const request = new Promise((resolve, reject) =>
-                setTimeout(
-                    () => (shouldSuccess ? resolve() : reject(Error('login failure'))),
-                    1000
-                )
-            )
 
             try {
-                await request
-                this.$store.commit('setProfile', { profile: {} }) // ダミーのオブジェクトをstore.state.profileに適用
+                const payload = {
+                    email: this.email,
+                    password: this.password
+                }
+                await this.$store.dispatch('login', payload)
                 this.loginStatus = 'success'
                 this.resultMessage = 'ログインに成功しました。'
             } catch (e) {

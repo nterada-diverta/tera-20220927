@@ -6,8 +6,6 @@ on:
   issue_comment:
     types: [created, edited]
   workflow_dispatch:
-env:
-  BASE_URL: ${{secrets.BASE_URL}}
 jobs:
   # for Pull Request (exclude merged)
   pullreq_build:
@@ -18,7 +16,7 @@ jobs:
       - name: "Get branch name and sha"
         id: get_branch
         run: |
-          PR=$(curl -H "Authorization: token 62102ee9daeab8455817a9d19d5cfa01" https://tera-20220927.g.kuroco.app/direct/menu/github/?pr=${{ github.event.issue.pull_request.url }})
+          PR=$(curl -H "Authorization: token b6d322d2dbbc6ca9f603f7b760582f95" https://tera-20220927.g.kuroco.app/direct/menu/github/?pr=${{ github.event.issue.pull_request.url }})
           echo "::set-output name=branch::$(echo $PR | jq -r '.ref')"
           echo "::set-output name=sha::$(echo $PR | jq -r '.sha')"
       - name: Checkout Repo
@@ -49,8 +47,8 @@ jobs:
         uses: diverta/workflow-webhook@v2
         env:
           webhook_url: "https://tera-20220927.g.kuroco.app/direct/menu/github/"
-          webhook_secret: "62102ee9daeab8455817a9d19d5cfa01"
-          data: '{"single_zip":"0","domain":"tera-20220927.g.kuroco-front.app","pr":"${{ github.event.issue.pull_request.url }}",  "repository":"${{ github.repository }}", "run_id":"${{ github.run_id }}", "hash":"${{ steps.get_branch.outputs.sha }}"}'
+          webhook_secret: "b6d322d2dbbc6ca9f603f7b760582f95"
+          data: '{"single_zip":"0","domain":"tera-1211.com","pr":"${{ github.event.issue.pull_request.url }}",  "repository":"${{ github.repository }}", "run_id":"${{ github.run_id }}", "hash":"${{ steps.get_branch.outputs.sha }}"}'
           
   #for Push
   pushed_build:
@@ -82,5 +80,5 @@ jobs:
         uses: diverta/workflow-webhook@v2
         env:
           webhook_url: "https://tera-20220927.g.kuroco.app/direct/menu/github/"
-          webhook_secret: "62102ee9daeab8455817a9d19d5cfa01"
-          data: '{"single_zip":"0","domain":"tera-20220927.g.kuroco-front.app", "repository":"${{ github.repository }}", "run_id":"${{ github.run_id }}", "hash":"${{ github.sha }}"}'
+          webhook_secret: "b6d322d2dbbc6ca9f603f7b760582f95"
+          data: '{"single_zip":"0","domain":"tera-1211.com", "repository":"${{ github.repository }}", "run_id":"${{ github.run_id }}", "hash":"${{ github.sha }}"}'
