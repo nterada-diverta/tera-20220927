@@ -33,9 +33,12 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/google-gtag'
   ],
-
+  'google-gtag': {
+    id: 'UA-51662-36',
+  },
   axios: {
     baseURL: process.env.BASE_URL,
     credentials: true,
