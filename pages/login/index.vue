@@ -12,11 +12,15 @@
             placeholder="password"
         />
         <button type="submit">
-            ログイン
+            Login
         </button>
         <div>
             <nuxt-link to="/news">
-                ニュース一覧ページへ
+                News list page
+            </nuxt-link>
+            <br/>
+            <nuxt-link to="/news/test_with_comment">
+                Test with comment
             </nuxt-link>
         </div>
     </form>
@@ -55,10 +59,10 @@ export default {
                 }
                 await this.$store.dispatch('login', payload)
                 this.loginStatus = 'success'
-                this.resultMessage = 'ログインに成功しました。'
+                this.resultMessage = 'Login successful'
             } catch (e) {
                 this.loginStatus = 'failure'
-                this.resultMessage = 'ログインに失敗しました。'
+                this.resultMessage = 'Login failed'
             };
         }
     },
