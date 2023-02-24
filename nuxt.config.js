@@ -50,5 +50,5 @@ export default {
   },
 
   target:'static',
-  ssr: true,
+  ssr: false,
 }
