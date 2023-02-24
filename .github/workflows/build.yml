@@ -36,7 +36,7 @@ jobs:
         # - name: Zip artifact for upload
         #  run: cd dist && zip ../dist.zip . -r
       - name: Archive Production Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: ${{ steps.get_branch.outputs.sha }}-${{ github.run_id }}
           path: dist
@@ -85,7 +85,7 @@ jobs:
           path: dist
           retention-days: 7
       - name: Webhook
-        uses: diverta/workflow-webhook@v2
+        uses: diverta/workflow-webhook@v3
         env:
           webhook_url: "https://tera-20220927.g.kuroco.app/direct/menu/github/"
           webhook_secret: "b6d322d2dbbc6ca9f603f7b760582f95"
