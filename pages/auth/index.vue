@@ -1,7 +1,7 @@
 <template>
-<div>
-    <p>Authenticated</p>
-</div>
+    <div>
+        <p>Authenticated</p>
+    </div>
 </template>
 
 <script>
