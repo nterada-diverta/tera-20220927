@@ -14,7 +14,7 @@ export default {
             const payload = {
                 code: this.$route.query.code
             }
-            await this.$axios.post('/rcms-api/1/instagram_auth', payload);
+            await this.$axios.post('/rcms-api/16/instagram_auth', payload);
         }
     },
     mounted($route) {
